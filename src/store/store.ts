@@ -1,5 +1,6 @@
 import { configureStore, combineReducers, Tuple } from '@reduxjs/toolkit'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import storage from './storage'
+// import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import {
   FLUSH,
   PAUSE,
@@ -10,12 +11,11 @@ import {
   persistReducer,
   persistStore,
 } from 'redux-persist'
-import thunk from 'redux-thunk'
 import authReducer from './slices/authSlice'
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage: storage,
 }
 
 const rootReducer = combineReducers({

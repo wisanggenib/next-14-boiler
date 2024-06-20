@@ -1,14 +1,14 @@
-// import './globals.css'
-// import type { AppProps } from 'next/app'
-
-// function MyApp({ Component, pageProps }: AppProps) {
-//   return <Component {...pageProps} />
-// }
-
-// export default MyApp
+'use client'
+import React from 'react'
+import { useRouter } from 'next/navigation'
 
 const Home = () => {
-  return <div>Home Page</div>
+  const router = useRouter()
+
+  React.useEffect(() => {
+    router.push('/dashboard')
+  }, [router])
+  return <div>Redirecting ....</div>
 }
 
 export default Home
