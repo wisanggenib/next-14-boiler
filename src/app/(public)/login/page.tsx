@@ -1,28 +1,43 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import { useRouter } from 'next/navigation'
 import { useDispatch } from 'react-redux'
 import { login } from '../../../store/slices/authSlice'
-import { Wrapper } from './style'
+import { Wrapper, WrapperAlert } from './style'
 import useHooks from './hooks'
+import AlertError from '@/app/components/alerts'
+import Spinner from '@/app/components/spinner'
 
 const Login = () => {
-  const router = useRouter()
-  const dispatch = useDispatch()
   const {
-    data: { isShowPassword },
-    methods: { onClickEye },
+    data: { modalError, isShowPassword, username, password, loading },
+    methods: {
+      onClickEye,
+      handleTextChange,
+      handleButtonLogin,
+      actionCloseModalError,
+    },
   } = useHooks()
-
-  const handleLogin = () => {
-    dispatch(login())
-    router.push('/dashboard')
-  }
 
   return (
     <Wrapper style={{ background: '#F5F7F8' }}>
+      <img
+        alt=""
+        src="https://images.unsplash.com/photo-1617195737496-bc30194e3a19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+        className="absolute inset-0 h-full w-full object-cover opacity-80 z-0"
+      />
+      {modalError.isOpen && (
+        <WrapperAlert>
+          <AlertError
+            closeAlert={actionCloseModalError}
+            title={modalError?.title}
+            description={modalError?.description}
+          />
+        </WrapperAlert>
+      )}
       <div
-        className="p-8 border rounded-md w-2/6 flex flex-col gap-4 shadow-2xl"
+        className="p-8 border rounded-md w-2/6 flex flex-col gap-4 shadow-2xl z-10"
         style={{ background: '#FFF' }}
       >
         <h3 className="font-bold text-2xl">Login</h3>
@@ -34,6 +49,10 @@ const Login = () => {
             <span className="text-xs font-medium text-gray-700"> Email </span>
 
             <input
+              onChange={(e) => {
+                handleTextChange('username', e?.target.value)
+              }}
+              value={username}
               type="email"
               id="UserEmail"
               placeholder="anthony@rhcp.com"
@@ -46,15 +65,16 @@ const Login = () => {
             htmlFor="UserPassword"
             className="block overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
           >
-            <span className="text-xs font-medium text-gray-700">
-              {' '}
-              Password{' '}
-            </span>
+            <span className="text-xs font-medium text-gray-700">Password</span>
             <input
               type={isShowPassword ? 'text' : 'password'}
               id="UserPassword"
               placeholder="anthony@rhcp.com"
               className="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+              onChange={(e) => {
+                handleTextChange('password', e?.target.value)
+              }}
+              value={password}
             />
             <div
               onClick={onClickEye}
@@ -75,14 +95,21 @@ const Login = () => {
             </div>
           </label>
         </div>
-        <div className="flex flex-row  w-full justify-center mt-5">
+        <div
+          onClick={!loading ? handleButtonLogin : () => {}}
+          className="flex flex-row  w-full justify-center mt-5"
+        >
           <a
             className="group inline-block rounded bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
             href="#"
           >
-            <span className="block rounded-sm bg-white px-8 py-3 text-sm font-medium group-hover:bg-transparent">
-              Login
-            </span>
+            {loading ? (
+              <Spinner />
+            ) : (
+              <span className="block rounded-sm bg-white px-8 py-3 text-sm font-medium group-hover:bg-transparent">
+                Login
+              </span>
+            )}
           </a>
         </div>
       </div>

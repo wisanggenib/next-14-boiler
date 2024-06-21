@@ -4,5 +4,5 @@ export const Wrapper = tw.div`
     w-full
     h-full
     overflow-hidden
-    bg-red-200
+    bg-neutral-50
 `
