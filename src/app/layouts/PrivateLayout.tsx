@@ -22,7 +22,7 @@ const PrivateLayout = ({ children, handleLogout }: PrivateLayoutProps) => {
       >
         <div
           className="no-scrollbar"
-          style={{ height: '100%', overflow: 'scroll' }}
+          style={{ height: '90vh', overflow: 'scroll' }}
         >
           {children}
         </div>
