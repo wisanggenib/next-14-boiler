@@ -16,7 +16,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <body>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            {children}
+            <div style={{ height: '100vh' }}>{children}</div>
           </PersistGate>
         </Provider>
       </body>

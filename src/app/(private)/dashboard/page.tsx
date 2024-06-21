@@ -1,5 +1,9 @@
+'use client'
+
+import { Wrapper } from './styles'
+
 const Dashboard = () => {
-  return <div className="bg-red-200 border-2">Dashboard</div>
+  return <Wrapper>Dashboard</Wrapper>
 }
 
 export default Dashboard

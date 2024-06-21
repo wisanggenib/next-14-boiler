@@ -6,10 +6,8 @@ type PublicLayoutProps = {
 
 const PublicLayout = ({ children }: PublicLayoutProps) => {
   return (
-    <div>
-      <header>Public Header</header>
+    <div className="bg-white" style={{ height: '100vh' }}>
       <main>{children}</main>
-      <footer>Public Footer</footer>
     </div>
   )
 }
