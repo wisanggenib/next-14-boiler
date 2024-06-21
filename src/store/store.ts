@@ -4,12 +4,12 @@ import storage from './storage'
 import {
   FLUSH,
   PAUSE,
-  PERSIST,
   PURGE,
+  PERSIST,
   REGISTER,
   REHYDRATE,
-  persistReducer,
   persistStore,
+  persistReducer,
 } from 'redux-persist'
 import authReducer from './slices/authSlice'
 
