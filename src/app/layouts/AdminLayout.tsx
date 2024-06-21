@@ -5,6 +5,7 @@ import { ReactNode } from 'react'
 import HeaderUser from '../components/headerUser'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store/store'
+import Link from 'next/link'
 
 type PrivateLayoutProps = {
   children: ReactNode
@@ -51,10 +52,7 @@ const AdminLayout = ({ children, handleLogout }: PrivateLayoutProps) => {
                 </div>
               </div>
               <div className="mr-2 ">
-                <a
-                  href="javascript:void(0)"
-                  className="dark:hover:text-primary hover:text-primary transition-colors duration-200 ease-in-out text-[1.075rem] font-medium dark:text-neutral-400/90 text-secondary-inverse"
-                >
+                <a className="dark:hover:text-primary hover:text-primary transition-colors duration-200 ease-in-out text-[1.075rem] font-medium dark:text-neutral-400/90 text-secondary-inverse">
                   {userData?.name.slice(0, 10)}
                 </a>
                 <span className="text-secondary-dark dark:text-stone-500 font-medium block text-[0.85rem]">
@@ -107,86 +105,22 @@ const AdminLayout = ({ children, handleLogout }: PrivateLayoutProps) => {
             <div className="flex flex-col w-full font-medium">
               <div>
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                  <a
-                    href="javascript:;"
+                  <Link
+                    href="/admin/product-category"
                     className="flex items-center flex-grow text-[1.15rem] dark:text-neutral-400/75 text-stone-500 hover:text-dark"
                   >
-                    Sales
-                  </a>
+                    Product Categories
+                  </Link>
                 </span>
               </div>
-
               <div>
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                  <a
-                    href="javascript:;"
-                    className="flex items-center flex-grow text-[1.15rem] dark:text-neutral-400/75 text-stone-500 hover:text-dark"
-                  >
-                    Profile
-                  </a>
-                </span>
-              </div>
-
-              <div>
-                <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                  <a
-                    href="javascript:;"
-                    className="flex items-center flex-grow text-[1.15rem] dark:text-neutral-400/75 text-stone-500 hover:text-dark"
-                  >
-                    Settings
-                  </a>
-                </span>
-              </div>
-
-              <div className="block pt-5 pb-[.15rem]">
-                <div className="px-4 py-[.65rem]">
-                  <span className="font-semibold text-[0.95rem] uppercase dark:text-neutral-500/80 text-secondary-dark">
-                    Applications
-                  </span>
-                </div>
-              </div>
-
-              <div>
-                <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                  <a
-                    href="javascript:;"
-                    className="flex items-center flex-grow text-[1.15rem] dark:text-neutral-400/75 text-stone-500 hover:text-dark"
-                  >
-                    Users
-                  </a>
-                </span>
-              </div>
-
-              <div>
-                <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                  <a
-                    href="javascript:;"
-                    className="flex items-center flex-grow text-[1.15rem] dark:text-neutral-400/75 text-stone-500 hover:text-dark"
-                  >
-                    Orders
-                  </a>
-                </span>
-              </div>
-
-              <div>
-                <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                  <a
-                    href="javascript:;"
-                    className="flex items-center flex-grow text-[1.15rem] dark:text-neutral-400/75 text-stone-500 hover:text-dark"
-                  >
-                    Track Order
-                  </a>
-                </span>
-              </div>
-
-              <div>
-                <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                  <a
-                    href="javascript:;"
+                  <Link
+                    href="/admin/product"
                     className="flex items-center flex-grow text-[1.15rem] dark:text-neutral-400/75 text-stone-500 hover:text-dark"
                   >
                     Products
-                  </a>
+                  </Link>
                 </span>
               </div>
             </div>
@@ -205,7 +139,7 @@ const AdminLayout = ({ children, handleLogout }: PrivateLayoutProps) => {
       >
         <div
           className="no-scrollbar p-2"
-          style={{ height: '100%', overflow: 'scroll' }}
+          style={{ height: '100%', overflow: 'scroll', width: '100%' }}
         >
           {children}
         </div>

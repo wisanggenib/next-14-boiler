@@ -79,6 +79,11 @@ const useHooks = () => {
           router.push('/dashboard')
         }
         //
+      } else {
+        actionOpenModalError(
+          'Something Went Wrong',
+          data?.Auth?.Login?.message || 'Something Went Wrong'
+        )
       }
     } catch (error: any) {
       actionOpenModalError(
