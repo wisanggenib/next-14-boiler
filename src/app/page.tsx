@@ -8,7 +8,9 @@ const Home = () => {
   React.useEffect(() => {
     router.push('/dashboard')
   }, [router])
-  return <div>Redirecting ....</div>
+  return (
+    <div className="text-3xl font-bold underline bg-red-400">Hello world!</div>
+  )
 }
 
 export default Home
